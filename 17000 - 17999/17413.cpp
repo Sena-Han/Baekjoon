@@ -15,7 +15,7 @@ void stackPop()
     }
 }
 
-int main() 
+int main()
 {
     string s;
     bool tag = false;
@@ -26,10 +26,8 @@ int main()
     {
         if (s[i] == '<')
         {
+            stackPop();
             tag = true;
-
-            if (!st.empty())
-                stackPop();
         }
         else if (s[i] == '>')
         {
@@ -40,9 +38,7 @@ int main()
         }
         else if (s[i] == ' ')
         {
-            if (!st.empty())
-                stackPop();
-
+            stackPop();
             res += ' ';
 
             continue;
@@ -54,8 +50,7 @@ int main()
             st.push(s[i]);
     }
 
-    if (!st.empty())
-        stackPop();
+    stackPop();
 
     cout << res << '\n';
 
